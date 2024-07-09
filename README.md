@@ -65,14 +65,6 @@ If an error occurs during the email sending process, an error message will be di
 
 Feel free to fork this repository and submit pull requests. Contributions are welcome!
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-For any questions or issues, please contact [Your Name] at [Your Email].
-
 ---
 
 BatchMaileR v.1.0.0 - Making batch email sending simple and efficient!
