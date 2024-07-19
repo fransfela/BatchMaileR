@@ -1,36 +1,35 @@
-# BatchMaileR v.1.0.0
+# BatchMaileR v2.1 - User Guide
 
-## Overview
+## Introduction
+Welcome to **BatchMaileR v2.1**! This application allows you to send batch emails with both common and personalized content and attachments. This guide will walk you through the setup and usage of the BatchMaileR application.
 
-**BatchMaileR v.1.0.0** is a Shiny web application designed to simplify the process of sending batch emails with attachments. It allows users to upload a dataset containing email addresses and other relevant information, customize the email body and subject, and attach multiple files. The app ensures that each email is personalized by replacing placeholders in the email body and subject with corresponding values from the dataset.
+### Author
+Randy Frans Fela, PhD. | Perceptual Audio Evaluation Team | GN Audio A/S
 
 ## Features
+- Upload recipient data from a CSV file.
+- Edit email body using a rich text editor with various formatting options.
+- Personalize email content using placeholders.
+- Attach common files to all emails.
+- Optionally attach personalized files to each email.
+- Clear fields and reset the application state easily.
 
-- **Batch Email Sending**: Send personalized emails to multiple recipients based on data from a CSV file.
-- **Email Body Customization**: Edit the email body directly within the app or upload a text file containing the email body.
-- **Attachments**: Upload multiple attachments, either all at once or one by one, and ensure that original file names are preserved in the sent emails.
-- **Email Preview**: Preview the dataset and email body before sending.
-- **Reset Functionality**: Clear all fields and reset file inputs easily.
+## If you run this code from source
 
-## Installation
+### Requirements
+- Shiny library
+- readr library
+- RDCOMClient library (for Windows users)
 
-### Prerequisites
-
-- **R**: Make sure you have R installed on your system. You can download it from [CRAN](https://cran.r-project.org/).
-- **RStudio**: It is recommended to use RStudio for running this application.
-
-### Required Libraries
-
-Install the required libraries by running the following commands in your R console:
-
+### Installation
+To use this application, ensure you have R and the required libraries installed. Install the necessary libraries using the following commands:
 ```R
 install.packages("shiny")
 install.packages("readr")
-install.packages("devtools")
-devtools::install_github("omegahat/RDCOMClient")
+install.packages("RDCOMClient")
 ```
 
-## Usage
+### Usage
 
 1. **Clone or Download the Repository**: Download the source code of BatchMaileR v.1.0.0 from the GitHub repository.
 2. **Open the R Script**: Open the `app.R` file in RStudio.
@@ -39,32 +38,59 @@ devtools::install_github("omegahat/RDCOMClient")
    shiny::runApp('path_to_app_directory')
    ```
 
-## User Interface
+## How to Use BatchMaileR
 
-### Sidebar Panel
+### 1. Upload Assessor Dataset (CSV)
+Click `Browse` and select a CSV file containing recipient data. The first row should contain the column names, including `AssessorEmail` and other placeholders used in the email body or subject.
 
-- **Upload Assessor Dataset (CSV)**: Upload a CSV file containing the recipient data. The CSV should have a column named `AssessorEmail` for the email addresses and other columns for personalization.
-- **Upload Email Body (TXT)**: Upload a text file containing the email body. Placeholders in the format `[ColumnName]` will be replaced with corresponding values from the dataset.
-- **Email Subject**: Enter the email subject. Placeholders in the format `[ColumnName]` will be replaced with corresponding values from the dataset.
-- **Sender Name and Title**: Enter the sender's name and title.
-- **Upload Attachments**: Upload one or more attachments. You can upload multiple files at once or one by one. The app ensures original file names are preserved in the sent emails.
-- **Send Emails**: Click this button to send the emails.
-- **Clear**: Click this button to clear all fields and reset file inputs.
+### 2. Upload Email Body (TXT)
+Click `Browse` and select a TXT file containing the initial email body content. The content will be loaded into the rich text editor for further editing.
+
+### 3. Email Subject
+Enter the subject of the email. You can use placeholders in the format `[ColumnName]`.
+
+### 4. Sender Name and Title
+Enter the sender's name and title in two lines (e.g., `John Doe\nCEO`).
+
+### 5. Upload Common Attachments
+Click `Browse` and select one or more files to be attached to all emails.
+
+### 6. Upload Personalized Attachments (Optional)
+Check the `Upload Personalized Attachments` checkbox if you want to include attachments specific to each recipient. Enter the directory path where the personalized attachments are stored. Enter the filenames with extensions in a comma-separated format. Use placeholders for dynamic filenames (e.g., `Report_[AssessorID].pdf`).
+
+### 7. Edit Email Body
+Use the rich text editor to modify the email body. The editor supports various formatting options.
+
+### 8. Send Emails
+Click `Send Emails` to start the email sending process. The status of the operation will be displayed below.
+
+### 9. Clear Fields
+Click `Clear` to reset all fields and clear the application state.
+
+## Application UI
 
 ### Main Panel
+- **Emailing Tab**:
+  - **Data Preview**: Shows a preview of the uploaded recipient data.
+  - **Edit Email Body**: Provides a rich text editor for editing the email body.
+  - **Status**: Displays the status of the email sending process.
 
-- **Data Preview**: View the first few rows of the uploaded dataset.
-- **Edit Email Body**: Edit the email body directly within the app.
-- **Status**: View the status of email sending operations.
+- **User Guide Tab**: Provides detailed instructions on how to use the application.
 
-## Error Handling
+### Sidebar Panel
+- **Upload Assessor Dataset (CSV)**: File input for uploading recipient data.
+- **Upload Email Body (TXT)**: File input for uploading the initial email body content.
+- **Email Subject**: Text input for the email subject.
+- **Sender Name and Title**: Text area input for the sender's name and title.
+- **Upload Common Attachments**: File input for uploading common attachments.
+- **Attached Files**: Displays a list of uploaded attachments.
+- **Upload Personalized Attachments**: Checkbox to enable personalized attachments.
+- **Directory Path**: Text input for the directory path of personalized attachments.
+- **File names with extension**: Text area input for the filenames of personalized attachments.
+- **Send Emails**: Button to send the emails.
+- **Clear**: Button to reset all fields and clear the application state.
 
-If an error occurs during the email sending process, an error message will be displayed in the status section. Common issues might include missing required fields or incorrect file formats.
-
-## Contribution
-
-Feel free to fork this repository and submit pull requests. Contributions are welcome!
+## Contact
+For any issues or questions, please contact Randy Frans Fela at [rffela@jabra.com](mailto:rffela@jabra.com).
 
 ---
-
-BatchMaileR v.1.0.0 - Making batch email sending simple and efficient!
