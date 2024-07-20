@@ -1,5 +1,7 @@
 # BatchMaileR v2.1 - User Guide
 
+![BatchMaileR Preview](images/preview.png)
+
 ## Introduction
 Welcome to **BatchMaileR v2.1**! This application allows you to send batch emails with both common and personalized content and attachments. This guide will walk you through the setup and usage of the BatchMaileR application.
 
